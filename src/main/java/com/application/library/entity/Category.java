@@ -1,6 +1,8 @@
 package com.application.library.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="categories")
@@ -12,6 +14,11 @@ public class Category {
 
     @Column(name="name",length = 50,nullable = false,unique = true)
    private String name;
+
+
+    @ManyToMany(mappedBy = "categories",cascade = CascadeType.ALL)
+    private Set<Book> books=new HashSet<Book>();
+
 
 
 }
