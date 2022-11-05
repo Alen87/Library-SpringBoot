@@ -19,7 +19,7 @@ public class BookService {
     }
 
 
-    public Book findAllBookById(Long id){
+    public Book findBookById(Long id){
          Book book;
          book=bookRepository.findById(id).orElseThrow(()->new RuntimeException("Book not found"));
          return book;
