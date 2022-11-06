@@ -55,5 +55,23 @@ public class CategoryController {
 
     }
 
+    @GetMapping("/add-category")
+    public String showCreateCategory(Category category){
+        return "add-category";
+    }
+
+    @PostMapping("/save-category")
+    public String saveCategory(Category category,BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            return "add-category";
+        }
+
+        categoryService.createCategory(category);
+        model.addAttribute("categories",categoryService.findAllCategories());
+        return "redirect:/categories";
+
+
+    }
+
 
 }
